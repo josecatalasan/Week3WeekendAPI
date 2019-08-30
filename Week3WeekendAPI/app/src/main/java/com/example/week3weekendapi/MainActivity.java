@@ -3,10 +3,12 @@ package com.example.week3weekendapi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.week3weekendapi.model.datasource.remote.HttpUrlConnectionHelper;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements HttpUrlConnectionHelper.HttpCallback {
 
