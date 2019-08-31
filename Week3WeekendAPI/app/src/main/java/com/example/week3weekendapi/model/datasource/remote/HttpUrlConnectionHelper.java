@@ -2,7 +2,6 @@ package com.example.week3weekendapi.model.datasource.remote;
 
 import com.example.week3weekendapi.BuildConfig;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -22,7 +21,7 @@ public class HttpUrlConnectionHelper {
     public static String doApiCall() {
         String jsonResponse = "";
         try {
-            url = new URL(MY_USER_PROFILE);
+            url = new URL(PROF_URL);
             httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
 
