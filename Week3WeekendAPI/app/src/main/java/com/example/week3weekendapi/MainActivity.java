@@ -1,11 +1,15 @@
 package com.example.week3weekendapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.week3weekendapi.model.profile.Profile;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity /*implements HttpUrlConnecti
     TextView tvGitUrl;
     @BindView(R.id.ivAvatar)
     ImageView ivAvatar;
+    @BindView(R.id.fabRepoList)
+    FloatingActionButton fabRepoList;
 
 
     @Override
@@ -36,6 +42,13 @@ public class MainActivity extends AppCompatActivity /*implements HttpUrlConnecti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        fabRepoList.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), RepoListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

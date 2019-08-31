@@ -75,4 +75,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/repositories"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@id/fabRepoList"
+        app:layout_constraintLeft_toLeftOf="@id/fabRepoList"
+        app:layout_constraintRight_toRightOf="@id/fabRepoList"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRepoList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="64dp"
+        app:maxImageSize="56dp"
+        app:srcCompat="@drawable/ic_repo_list"
+        app:backgroundTint="@color/dark_green"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
