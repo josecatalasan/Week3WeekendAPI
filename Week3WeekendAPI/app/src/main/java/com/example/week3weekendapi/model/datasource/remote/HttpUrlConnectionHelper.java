@@ -19,23 +19,23 @@ public class HttpUrlConnectionHelper {
     private static HttpURLConnection httpURLConnection;
     private static URL url;
 
-    public static void doApiCall(HttpCallback callback) throws IOException {
+    public static String doApiCall() {
         String jsonResponse = "";
-        url = new URL(MY_USER_PROFILE);
-        httpURLConnection = (HttpURLConnection) url.openConnection();
-        InputStream inputStream = httpURLConnection.getInputStream();
+        try {
+            url = new URL(MY_USER_PROFILE);
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
 
-        int currentRead = inputStream.read();
-        while(currentRead != -1){
-            char currentChar = (char)currentRead;
-            jsonResponse += currentChar;
-            currentRead = inputStream.read();
+            int currentRead = inputStream.read();
+            while(currentRead != -1){
+                char currentChar = (char)currentRead;
+                jsonResponse += currentChar;
+                currentRead = inputStream.read();
+            }
+            return jsonResponse;
+        }catch(IOException e){
+            e.printStackTrace();
+            return null;
         }
-
-        callback.onHttpUrlConnectionResponse(jsonResponse);
-    }
-
-    public interface HttpCallback{
-        void onHttpUrlConnectionResponse(String json);
     }
 }

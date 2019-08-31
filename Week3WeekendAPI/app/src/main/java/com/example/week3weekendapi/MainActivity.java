@@ -1,43 +1,31 @@
 package com.example.week3weekendapi;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import java.util.concurrent.ExecutionException;
 
-import com.example.week3weekendapi.model.datasource.remote.HttpUrlConnectionHelper;
-
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-public class MainActivity extends AppCompatActivity implements HttpUrlConnectionHelper.HttpCallback {
+public class MainActivity extends AppCompatActivity /*implements HttpUrlConnectionHelper.HttpCallback*/ {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Thread networkThread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try {
-                    HttpUrlConnectionHelper.doApiCall(MainActivity.this);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        networkThread.start();
-//        TextView test = findViewById(R.id.tvTest);
-//        test.setText("IM HERE");
     }
 
     @Override
-    public void onHttpUrlConnectionResponse(String json) {
-        Log.d("TAG", json);
-        System.out.println(json);
+    protected void onResume() {
+        super.onResume();
+        ProfileAsyncTask profileAsyncTask = new ProfileAsyncTask();
+        try {
+            String json = profileAsyncTask.execute().get();
+            System.out.println(json);
+            Log.d("TAG", json);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+
 }
