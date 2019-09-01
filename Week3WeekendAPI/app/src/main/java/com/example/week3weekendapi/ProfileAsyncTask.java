@@ -16,7 +16,7 @@ public class ProfileAsyncTask extends AsyncTask<Void, Void, Profile> {
 
     @Override
     protected Profile doInBackground(Void... voids) {
-        String json = HttpUrlConnectionHelper.doShortApiCall(url);
+        String json = HttpUrlConnectionHelper.doProfileApiCall(url);
         Gson gson = new Gson();
         Profile returnProfile = gson.fromJson(json, Profile.class);
         return returnProfile;

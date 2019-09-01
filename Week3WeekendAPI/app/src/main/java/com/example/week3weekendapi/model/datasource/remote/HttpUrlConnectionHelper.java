@@ -1,11 +1,17 @@
 package com.example.week3weekendapi.model.datasource.remote;
 
 import com.example.week3weekendapi.BuildConfig;
+import com.example.week3weekendapi.model.repos.Repository;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class HttpUrlConnectionHelper {
     public static final String COMPLETE_URL = "https://randomuser.me/api/?result=5";
@@ -18,7 +24,7 @@ public class HttpUrlConnectionHelper {
     private static HttpURLConnection httpURLConnection;
     private static URL url;
 
-    public static String doShortApiCall(String apiCall) {
+    public static String doProfileApiCall(String apiCall) {
         String jsonResponse = "";
         try {
             url = new URL(apiCall);
@@ -32,6 +38,29 @@ public class HttpUrlConnectionHelper {
                 currentRead = inputStream.read();
             }
             return jsonResponse;
+        }catch(IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<Repository> doRepoApiCall(String apiCall) {
+        String jsonResponse = "";
+        try {
+            ArrayList<Repository> returnList = new ArrayList<>();
+            url = new URL(apiCall);
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+
+            //Parse inputStream
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new InputStreamReader(inputStream, "UTF-8"));
+            reader.beginArray();
+            while(reader.hasNext()){
+                Repository repository = gson.fromJson(reader, Repository.class);
+                returnList.add(repository);
+            }
+            return returnList;
         }catch(IOException e){
             e.printStackTrace();
             return null;
