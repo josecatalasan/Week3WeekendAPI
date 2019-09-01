@@ -58,13 +58,13 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
         try {
             Date updated = sdf.parse(date);
             Date today = Calendar.getInstance().getTime();
-//            updated.setTime(updated.getTime() - TimeUnit.MILLISECONDS.convert(4, TimeUnit.HOURS));
 
             long diffInMillies = Math.abs(today.getTime() - updated.getTime());
             diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
             if(diff == 1)
                 period = " day";
+
             if(diff < 1){
                 diff = TimeUnit.HOURS.convert(diffInMillies, TimeUnit.MILLISECONDS);
                 if(diff == 1)
@@ -74,7 +74,7 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
             }if(diff < 1){
                 diff = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
                 if(diff == 1)
-                    period = " minutes";
+                    period = " minute";
                 else
                     period = " minutes";
             }
