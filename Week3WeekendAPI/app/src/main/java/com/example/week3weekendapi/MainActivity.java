@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.example.week3weekendapi.model.datasource.remote.HttpUrlConnectionHelper;
 import com.example.week3weekendapi.model.profile.Profile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.ExecutionException;
@@ -19,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity /*implements HttpUrlConnectionHelper.HttpCallback*/ {
+public class MainActivity extends AppCompatActivity{
     @BindView(R.id.tvName)
     TextView tvName;
     @BindView(R.id.tvCompany)
@@ -58,10 +57,8 @@ public class MainActivity extends AppCompatActivity /*implements HttpUrlConnecti
         ProfileAsyncTask profileAsyncTask = new ProfileAsyncTask(HttpUrlConnectionHelper.PROF_URL);
         try {
             //start AsyncTask and save JSon response to string
-            String json = profileAsyncTask.execute().get();
             //parse Json response and save into Object
-            Gson gson = new Gson();
-            Profile myProfile = gson.fromJson(json, Profile.class);
+            Profile myProfile = profileAsyncTask.execute().get();
             //set view with Profile Object
             tvName.setText(myProfile.getName());
             tvCompany.setText(myProfile.getCompany());

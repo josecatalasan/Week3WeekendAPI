@@ -3,8 +3,10 @@ package com.example.week3weekendapi;
 import android.os.AsyncTask;
 
 import com.example.week3weekendapi.model.datasource.remote.HttpUrlConnectionHelper;
+import com.example.week3weekendapi.model.profile.Profile;
+import com.google.gson.Gson;
 
-public class ProfileAsyncTask extends AsyncTask<Void, Void, String> {
+public class ProfileAsyncTask extends AsyncTask<Void, Void, Profile> {
     String url;
 
     public ProfileAsyncTask(String url) {
@@ -13,7 +15,10 @@ public class ProfileAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... voids) {
-        return HttpUrlConnectionHelper.doApiCall(url);
+    protected Profile doInBackground(Void... voids) {
+        String json = HttpUrlConnectionHelper.doShortApiCall(url);
+        Gson gson = new Gson();
+        Profile returnProfile = gson.fromJson(json, Profile.class);
+        return returnProfile;
     }
 }

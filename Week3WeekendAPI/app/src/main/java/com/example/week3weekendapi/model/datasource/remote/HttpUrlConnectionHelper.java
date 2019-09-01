@@ -18,7 +18,7 @@ public class HttpUrlConnectionHelper {
     private static HttpURLConnection httpURLConnection;
     private static URL url;
 
-    public static String doApiCall(String apiCall) {
+    public static String doShortApiCall(String apiCall) {
         String jsonResponse = "";
         try {
             url = new URL(apiCall);
