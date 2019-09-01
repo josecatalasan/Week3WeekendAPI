@@ -14,12 +14,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class HttpUrlConnectionHelper {
-    public static final String COMPLETE_URL = "https://randomuser.me/api/?result=5";
     public static final String MY_USER_PROFILE = "https://api.github.com/users/josecatalasan";
     public static final String MY_USER_PROFILE2 = "api.github.com/users/josecatalasan";
     public static final String MY_REPO_LIST = "https://api.github.com/users/josecatalasan/repos";
+    public static final String MY_REPO_LIST2 = "api.github.com/users/josecatalasan/repos";
     public static final String PROF_URL = "https://" + BuildConfig.ACCESS_TOKEN + ":x-oauth-basic@" + MY_USER_PROFILE2;
-    public static final String REPO_URL = "https://" + BuildConfig.ACCESS_TOKEN + ":x-oauth-basic@" + MY_REPO_LIST;
+    public static final String REPO_URL = "https://" + BuildConfig.ACCESS_TOKEN + ":x-oauth-basic@" + MY_REPO_LIST2;
 
     private static HttpURLConnection httpURLConnection;
     private static URL url;

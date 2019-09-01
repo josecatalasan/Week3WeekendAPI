@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp">
 
     <TextView
-        android:id="@+id/tvOne"
+        android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_text_size"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/tvTwo"
+        android:id="@+id/tvLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_text_size"
-        app:layout_constraintTop_toBottomOf="@id/tvOne"
-        app:layout_constraintRight_toLeftOf="@id/tvThree"/>
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"/>
 
     <TextView
-        android:id="@+id/tvThree"
+        android:id="@+id/tvLastUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/list_text_size"
-        app:layout_constraintTop_toBottomOf="@id/tvOne"
-        app:layout_constraintLeft_toRightOf="@id/tvTwo"/>
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintRight_toRightOf="@id/tvName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

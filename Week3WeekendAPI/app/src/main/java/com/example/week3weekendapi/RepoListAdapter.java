@@ -1,6 +1,5 @@
 package com.example.week3weekendapi;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +33,9 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository currentRepository = repoList.get(position);
-        holder.tvOne.setText(currentRepository.getName());
-        holder.tvTwo.setText(currentRepository.getLanguage());
-        holder.tvThree.setText(currentRepository.getCreatedAt());
+        holder.tvName.setText(currentRepository.getName());
+        holder.tvLanguage.setText(currentRepository.getLanguage());
+        holder.tvLastUpdate.setText(currentRepository.getCreatedAt());
     }
 
     @Override
@@ -45,12 +44,12 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.tvOne)
-        TextView tvOne;
-        @BindView(R.id.tvTwo)
-        TextView tvTwo;
-        @BindView(R.id.tvThree)
-        TextView tvThree;
+        @BindView(R.id.tvName)
+        TextView tvName;
+        @BindView(R.id.tvLanguage)
+        TextView tvLanguage;
+        @BindView(R.id.tvLastUpdate)
+        TextView tvLastUpdate;
         Repository itemRepository;
 
         public void setItemRepository(Repository itemRepository) {
