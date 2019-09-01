@@ -62,16 +62,28 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
 
             long diffInMillies = Math.abs(today.getTime() - updated.getTime());
             diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+            if(diff == 1)
+                period = " day";
             if(diff < 1){
                 diff = TimeUnit.HOURS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                period = " hours";
+                if(diff == 1)
+                    period = " hour";
+                else
+                    period = " hours";
             }if(diff < 1){
                 diff = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                period = " minutes";
+                if(diff == 1)
+                    period = " minutes";
+                else
+                    period = " minutes";
             }
             if(diff < 1){
                 diff = TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                period = " seconds";
+                if(diff == 1)
+                    period = " second";
+                else
+                    period = " seconds";
             }
         } catch (ParseException e) {
             e.printStackTrace();
