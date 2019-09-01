@@ -18,10 +18,10 @@ public class HttpUrlConnectionHelper {
     private static HttpURLConnection httpURLConnection;
     private static URL url;
 
-    public static String doApiCall() {
+    public static String doApiCall(String apiCall) {
         String jsonResponse = "";
         try {
-            url = new URL(PROF_URL);
+            url = new URL(apiCall);
             httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.week3weekendapi.model.datasource.remote.HttpUrlConnectionHelper;
 import com.example.week3weekendapi.model.profile.Profile;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity /*implements HttpUrlConnecti
     @Override
     protected void onResume() {
         super.onResume();
-        ProfileAsyncTask profileAsyncTask = new ProfileAsyncTask();
+        ProfileAsyncTask profileAsyncTask = new ProfileAsyncTask(HttpUrlConnectionHelper.PROF_URL);
         try {
             //start AsyncTask and save JSon response to string
             String json = profileAsyncTask.execute().get();
