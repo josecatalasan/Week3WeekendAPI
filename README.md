@@ -10,6 +10,10 @@ This helper class does most of the work concerning the API calls of this applica
 
 This activity contains 6 TextViews, one ImageView, and one FloatingActionButton. It starts an Asynchronous Task using ProfileAsyncTask to make the API call to get my profile information and return that information in a Profile Object. Then, it uses that Profile Object to fill in the Views with information. The Picasso 3rd party library is used to fill the ImageView with the Avatar image in my profile. The floating action button starts RepoListActivity.
 
+![](profile.png)
+
 ## RepoListActivity
 
 This activity contains a single RecyclerView to store and display my list of repositories. It starts another Asynchronous Task using RepoAsyncTask to make the API call to get the list of my owned repositories. The AsyncTask returns an ArrayList of Repository Objects that this activity uses to fill the Adapter that is passed to the RecyclerView.
+
+![](repoList.png) ![](repoList2.png)
