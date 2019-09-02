@@ -4,25 +4,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-
 import com.example.week3weekendapi.model.repos.Repository;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
+
     ArrayList<Repository> repoList;
 
     public RepoListAdapter(ArrayList<Repository> repoList) {
@@ -41,7 +37,6 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
         Repository currentRepository = repoList.get(position);
         holder.tvName.setText(currentRepository.getName());
         holder.tvLanguage.setText(currentRepository.getLanguage());
-        //parse date
         holder.tvLastUpdate.setText(String.format("Updated %s ago", getTimeSince(currentRepository.getUpdatedAt())));
     }
 
@@ -55,6 +50,7 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
 
         long diff = 0;
         String period = " days";
+
         try {
             Date updated = sdf.parse(date);
             Date today = Calendar.getInstance().getTime();
@@ -99,11 +95,6 @@ public class RepoListAdapter extends Adapter<RepoListAdapter.ViewHolder> {
         TextView tvLanguage;
         @BindView(R.id.tvLastUpdate)
         TextView tvLastUpdate;
-        Repository itemRepository;
-
-        public void setItemRepository(Repository itemRepository) {
-            this.itemRepository = itemRepository;
-        }
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
